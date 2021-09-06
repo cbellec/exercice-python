@@ -1,16 +1,34 @@
 from random import *
 
 class jeu:
+    """
+    le jeu bien connue du pierre,feuille, cisseau amélioré par BBT
+
+    """
 
     def __init__(self):
         """init"""
 
 
     def cpu(self):
+        """
+        return random choice
+
+            return:
+                choix_cpu (int) : random integer numbre in 0 to 4
+        """
         choix_cpu = randint(0,4)
         return choix_cpu
 
     def victoire(self, choix_user):
+        """
+        defini la victoire
+
+            parameters :
+                choix_user (int): a decimal integer, player choice
+
+
+        """
         choix_cpu = randint(0,4)
 
         list_move = ["pierre","feuille","ciseau","lezard","spock"]
@@ -37,6 +55,11 @@ class jeu:
 
 
     def play(self):
+        """
+        
+        the main part, the game
+
+        """
         print("message bienvenue jeu")
         while True:
             try:
