@@ -48,7 +48,9 @@ class jeu:
             continu = input('veux tu contunuer ? y/n')
             if continu == "y" or continu == "Y":
                 pass
-            else continu == "n" or continu == "N":
+            elif continu == "n" or continu == "N":
+                break
+            else:
                 break
 
 
