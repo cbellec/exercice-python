@@ -12,7 +12,9 @@ class jeu:
 
     def cpu(self, user):
         """
-        return random choice
+        return random choice and prevent ties
+            parameters :
+                user (int) : the choice from user
 
             return:
                 choix_cpu (int) : random integer numbre in 0 to 4
