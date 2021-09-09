@@ -10,7 +10,7 @@ class jeu:
         """init"""
 
 
-    def cpu(self):
+    def cpu(self, user):
         """
         return random choice
 
@@ -18,6 +18,8 @@ class jeu:
                 choix_cpu (int) : random integer numbre in 0 to 4
         """
         choix_cpu = randint(0,4)
+        while user == choix_cpu: # prevent ties
+             choix_cpu = randint(0,4)
         return choix_cpu
 
     def victoire(self, choix_user):
@@ -29,7 +31,6 @@ class jeu:
 
 
         """
-        choix_cpu = randint(0,4)
 
         list_move = ["pierre","feuille","ciseau","lezard","spock"]
         dict_vict = {
@@ -42,13 +43,10 @@ class jeu:
 
         user_to_int = int(choix_user) - 1
 
-        while user_to_int == choix_cpu: # prevent ties
-             choix_cpu = randint(0,4)
-
         choix_user = list_move[user_to_int] # return to index
         choix_user = dict_vict[choix_user]
 
-        choix_cpu = list_move[choix_cpu] # return to index
+        choix_cpu = list_move[self.cpu(user_to_int)] # return to index
 
         if choix_cpu in choix_user:
             print("bravo !!")
@@ -66,11 +64,11 @@ class jeu:
         """
         print("message bienvenue jeu")
         while True:
-            try:
-                choix_user = int(input('choisi ton signe \n 1 - pierre \n 2 - feuille \n 3 - cisseau \n 4 - lezard \n 5 - spock \n'))
-                self.victoire(choix_user)
-            except:
-                print("tu n'a le droit qu aux nombre de 1 a 5")
+
+            choix_user = int(input('choisi ton signe \n 1 - pierre \n 2 - feuille \n 3 - cisseau \n 4 - lezard \n 5 - spock \n'))
+            self.victoire(choix_user)
+
+            print("tu n'a le droit qu aux nombre de 1 a 5")
 
 
             continu = input('veux tu continuer ? y/n')
