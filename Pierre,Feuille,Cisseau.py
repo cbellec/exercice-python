@@ -40,7 +40,12 @@ class jeu:
                     "spock":["pierre","ciseau"]
                     }
 
-        choix_user = list_move[int(choix_user) - 1] # return to index
+        user_to_int = int(choix_user) - 1
+
+        while user_to_int == choix_cpu: # prevent ties
+             choix_cpu = randint(0,4)
+
+        choix_user = list_move[user_to_int] # return to index
         choix_user = dict_vict[choix_user]
 
         choix_cpu = list_move[choix_cpu] # return to index
@@ -56,7 +61,6 @@ class jeu:
 
     def play(self):
         """
-        
         the main part, the game
 
         """
@@ -64,11 +68,12 @@ class jeu:
         while True:
             try:
                 choix_user = int(input('choisi ton signe \n 1 - pierre \n 2 - feuille \n 3 - cisseau \n 4 - lezard \n 5 - spock \n'))
+                self.victoire(choix_user)
             except:
                 print("tu n'a le droit qu aux nombre de 1 a 5")
-            self.victoire(choix_user)
 
-            continu = input('veux tu contunuer ? y/n')
+
+            continu = input('veux tu continuer ? y/n')
             if continu == "y" or continu == "Y":
                 pass
             elif continu == "n" or continu == "N":
